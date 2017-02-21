@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/idIndex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="@dimen/ad_item_idIndex_top_margin"
+            android:text="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/ad_item_idIndex_textSize" />
+
+        <TextView
+            android:id="@+id/idQuestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/ad_item_idQues_left_margin"
+            android:layout_marginTop="@dimen/ad_item_idQues_top_margin"
+            android:text="问卷调查开始啦？"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/ad_item_idIndex_textSize" />
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/advise_item_gridlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/ad_item_gridLay_margin"
+        android:layout_marginRight="@dimen/ad_item_gridLay_margin"
+        android:layout_marginTop="@dimen/ad_item_gridLay_top_margin"
+        android:alignmentMode="alignBounds"
+        android:columnCount="3"
+        android:useDefaultMargins="true" >
+    </GridLayout>
+
+    <!-- <RadioGroup -->
+    <!-- android:id="@+id/idAdviseGroup" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_marginLeft="50dp" -->
+    <!-- android:layout_marginTop="20dp" -->
+    <!-- android:gravity="center_vertical|center_horizontal" -->
+    <!-- android:visibility="gone" -->
+    <!-- android:orientation="vertical" > -->
+
+
+    <!-- </RadioGroup> -->
+
+</LinearLayout>

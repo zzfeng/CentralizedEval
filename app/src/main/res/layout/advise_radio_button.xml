@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/idRadioButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@null"
+    android:button="@null"
+    android:drawableLeft="@drawable/radio_selector"
+    android:drawablePadding="5dp"
+    android:gravity="left|center_vertical"
+    android:minWidth="@dimen/ad_radioBtn_minWidth"
+    android:paddingRight="@dimen/ad_radioBtn_padding_right"
+    android:text="不满意"
+    android:textSize="@dimen/ad_radioBtn_textSize" >
+
+</RadioButton>

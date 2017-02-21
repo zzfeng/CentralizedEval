@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="100"
+            android:background="#0893A8" >
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="设备信息"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/title_text_size" />
+
+            <ImageView
+                android:id="@+id/title_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/title_img_right_margin"
+                android:src="@drawable/top" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/dev_scrollview_margin"
+            android:layout_weight="1490"
+            android:background="@drawable/white_rounded_bg" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dev_scrollview_margin"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:id="@+id/TextView05"
+                        style="@style/device_left_text_style"
+                        android:text="设备MAC：" />
+
+                    <TextView
+                        android:id="@+id/idMac"
+                        style="@style/device_right_text_style"
+                        android:textColor="#F00" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:id="@+id/TextView06"
+                        style="@style/device_left_text_style"
+                        android:text="软件版本：" />
+
+                    <TextView
+                        android:id="@+id/idVer"
+                        style="@style/device_right_text_style"
+                        android:textColor="#0F0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/TextView"
+                        style="@style/device_left_text_style"
+                        android:text="资源版本号：" />
+
+                    <TextView
+                        android:id="@+id/idPersion"
+                        style="@style/device_right_text_style"
+                        android:textColor="#0F0" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:id="@+id/TextView08"
+                        style="@style/device_left_text_style"
+                        android:text="设备IP：" />
+
+                    <TextView
+                        android:id="@+id/idIp"
+                        style="@style/device_right_text_style"
+                        android:text="127.0.0.1"
+                        android:textColor="#868686" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:id="@+id/TextView09"
+                        style="@style/device_left_text_style"
+                        android:text="服务器IP：" />
+
+                    <EditText
+                        android:id="@+id/idServerIp"
+                        style="@style/device_right_text_style"
+                        android:background="@null"
+                        android:hint="xxx.xxx.xxx.xxx"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:id="@+id/TextView12"
+                        style="@style/device_left_text_style"
+                        android:text="服务器端口：" />
+
+                    <EditText
+                        android:id="@+id/idServerPort"
+                        style="@style/device_right_text_style"
+                        android:background="@null"
+                        android:hint="xxxx"
+                        android:inputType="number"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/TextView10"
+                        style="@style/device_left_text_style"
+                        android:text="设备状态：" />
+
+                    <TextView
+                        android:id="@+id/idState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:textColor="#C6C6C6" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" >
+
+                    <TextView
+                        android:id="@+id/TextView13"
+                        style="@style/device_left_text_style"
+                        android:text="官网服务器：" />
+
+                    <EditText
+                        android:id="@+id/idOrgUrl"
+                        style="@style/device_right_text_style"
+                        android:background="@null"
+                        android:hint="http://www.lekepai.cn:8080/"
+                        android:singleLine="true" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_skin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/TextView14"
+                        style="@style/device_left_text_style"
+                        android:text="皮肤颜色：" />
+
+                    <ImageView
+                        android:id="@+id/iv_skin1"
+                        android:layout_width="@dimen/dev_iv_skin_w_h"
+                        android:layout_height="@dimen/dev_iv_skin_w_h"
+                        android:layout_marginLeft="@dimen/dev_iv_skin_margin"
+                        android:background="#FF0893A8"
+                        android:tag="#FF0893A8" />
+
+                    <ImageView
+                        android:id="@+id/iv_skin2"
+                        android:layout_width="@dimen/dev_iv_skin_w_h"
+                        android:layout_height="@dimen/dev_iv_skin_w_h"
+                        android:layout_marginLeft="@dimen/dev_iv_skin_margin"
+                        android:background="#FFC107"
+                        android:tag="#FFC107" />
+
+                    <ImageView
+                        android:id="@+id/iv_skin3"
+                        android:layout_width="@dimen/dev_iv_skin_w_h"
+                        android:layout_height="@dimen/dev_iv_skin_w_h"
+                        android:layout_marginLeft="@dimen/dev_iv_skin_margin"
+                        android:background="#8BC34A"
+                        android:tag="#8BC34A" />
+
+                    <ImageView
+                        android:id="@+id/iv_skin4"
+                        android:layout_width="@dimen/dev_iv_skin_w_h"
+                        android:layout_height="@dimen/dev_iv_skin_w_h"
+                        android:layout_marginLeft="@dimen/dev_iv_skin_margin"
+                        android:background="#F87197"
+                        android:tag="#F87197" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_test"
+                    android:layout_width="200dp"
+                    android:layout_height="80dp"
+                    android:background="#FF0000FF"
+                    android:text="Test"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </ScrollView>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="200" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="@dimen/btn_back_width"
+        android:layout_height="@dimen/btn_back_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/eval_btn_back_bottom_margin"
+        android:layout_marginRight="@dimen/eval_btn_back_left_margin"
+        android:background="@drawable/btn_close" />
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/btn_back_width"
+        android:layout_height="@dimen/btn_back_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/eval_btn_back_bottom_margin"
+        android:layout_marginLeft="@dimen/eval_btn_back_left_margin"
+        android:background="@drawable/btn_back" />
+
+</RelativeLayout>

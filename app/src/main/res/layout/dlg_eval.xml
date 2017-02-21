@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dlg_relLayout_width"
+    android:layout_height="@dimen/dlg_relLayout_height"
+    android:background="@drawable/eval_dlg_bg" >
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="@dimen/dlg_btnOk_width"
+        android:layout_height="@dimen/dlg_btnOk_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dlg_btn_ok_bottom_margin"
+        android:background="@drawable/btn_queding"
+        android:minHeight="@dimen/dlg_btn_ok_minHeight"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="@dimen/dlg_tvTitle_width"
+        android:layout_height="@dimen/dlg_tvTitle_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dlg_tvTitle_top_margin"
+        android:minHeight="@dimen/dlg_tvTitle_minHeight"
+        android:text="感谢您对我们的肯定"
+        android:textColor="#FF4A4A4A"
+        android:textSize="@dimen/dlg_tvTitle_size" />
+
+    <EditText
+        android:id="@+id/et_msg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dlg_etMsg_height"
+        android:layout_above="@+id/btn_ok"
+        android:layout_below="@+id/tv_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dlg_etMsg_bottom_margin"
+        android:layout_marginLeft="@dimen/dlg_etMsg_margin"
+        android:layout_marginRight="@dimen/dlg_etMsg_margin"
+        android:layout_marginTop="@dimen/dlg_etMsg_margin"
+        android:background="#00000000"
+        android:gravity="center"
+        android:hint="我还有意见要说"
+        android:inputType="text"
+        android:maxLength="50"
+        android:minHeight="@dimen/dlg_etMsg_minHeight"
+        android:singleLine="false"
+        android:text=""
+        android:textColor="#FF0893A8"
+        android:textColorHint="#FF0893A8"
+        android:textSize="@dimen/dlg_etMsg_size" />
+
+</RelativeLayout>

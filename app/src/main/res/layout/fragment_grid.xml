@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <GridView
+        android:id="@+id/gridView_depart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/frag_grid_left_margin"
+        android:layout_marginRight="@dimen/frag_grid_left_margin"
+        android:layout_marginTop="@dimen/frag_grid_top_margin"
+        android:gravity="center"
+        android:horizontalSpacing="@dimen/frag_grid_hor_spac"
+        android:numColumns="3"
+        android:verticalSpacing="@dimen/frag_grid_ver_spac" >
+    </GridView>
+
+    <!-- <Button -->
+    <!-- android:id="@+id/back" -->
+    <!-- android:layout_width="80dp" -->
+    <!-- android:layout_height="80dp" -->
+    <!-- android:layout_alignBottom="@+id/gridView_depart" -->
+    <!-- android:layout_marginBottom="40dp" -->
+    <!-- android:layout_marginLeft="40dp" -->
+    <!-- android:background="@drawable/btn_back" -->
+    <!-- android:onClick="back" /> -->
+
+</LinearLayout>

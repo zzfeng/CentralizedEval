@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <button><img>eval_1.png</img><key>6</key><text>非常满意</text><size>30</size><x>1</x><y>0</y><r>0</r><g>0</g><b>0</b><index>0</index></button>
+    <button><img>eval_2.png</img><key>7</key><text>满意</text><size>30</size><x>2</x><y>0</y><r>0</r><g>0</g><b>0</b><index>1</index></button>
+    <button><img>eval_0.png</img><key>8</key><text>一般</text><size>30</size><x>0</x><y>1</y><r>0</r><g>0</g><b>0</b><index>2</index></button>
+    <button><img>eval_2.png</img><key>9</key><text>不满意</text><size>30</size><x>1</x><y>1</y><r>0</r><g>0</g><b>0</b><index>3</index></button>
+    <button><img>eval_1.png</img><key>10</key><text>非常差</text><size>30</size><x>2</x><y>1</y><r>0</r><g>0</g><b>0</b><index>4</index></button>
+</root>

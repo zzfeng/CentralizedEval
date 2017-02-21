@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_marginLeft="@dimen/frag_list_margin"
+            android:layout_marginRight="@dimen/frag_list_margin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+<!-- <Button
+            android:id="@+id/back"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignBottom="@+id/listView"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/btn_back"
+            android:onClick="back" /> -->
+       
+    </RelativeLayout>
+
+</LinearLayout>

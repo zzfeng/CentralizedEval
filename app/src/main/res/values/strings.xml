@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CentralizedEval</string>
+    <string name="advise_item">意见调查</string>
+    <string name="advise_title">意见调查</string>
+    <string name="commit_button">提交意见</string>
+    <string name="return_button">点击返回</string>
+    <string name="ads_item">展示宣传</string>
+    <string name="update_title">升级</string>
+    <string name="update_message">正在升级主程序，请稍后...</string>
+    <string name="update_done">升级完成，请您拔出存储卡</string>
+    <string name="ok">确定</string>
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="radio0" type="id"/>
+    <item name="radio1" type="id"/>
+    <item name="radio2" type="id"/>
+    <item name="radio3" type="id"/>
+    <item name="radio4" type="id"/>
+    <item name="radio5" type="id"/>
+    <item name="radio6" type="id"/>
+    <item name="radio7" type="id"/>
+    <item name="radio8" type="id"/>
+
+</resources>

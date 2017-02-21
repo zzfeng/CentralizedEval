@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/linLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/list_item_linLayout1_height"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/iv_head"
+            android:layout_width="@dimen/list_item_iv_width"
+            android:layout_height="@dimen/list_item_iv_height"
+            android:layout_marginBottom="@dimen/list_item_iv_margin"
+            android:layout_marginLeft="@dimen/list_item_iv_margin"
+            android:layout_marginTop="@dimen/list_item_iv_margin"
+            android:src="@drawable/white_rounded_bg" />
+
+        <LinearLayout
+            android:id="@+id/linLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_linLayout2_height"
+            android:layout_marginLeft="@dimen/list_item_linLayout2_left_margin"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/linLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_item_linLayout3_height"
+                android:layout_marginTop="@dimen/list_item_linLayout3_top_margin"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="张宗昌"
+                    android:textSize="@dimen/list_item_tvName_size" />
+
+                <TextView
+                    android:id="@+id/tv_jobTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginLeft="@dimen/list_item_tvJobTitle_left_margin"
+                    android:text="主任医师"
+                    android:textColor="#0893A8"
+                    android:textSize="@dimen/list_item_tvJobTitle_size" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_job"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/list_item_tvJob_height"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="@dimen/list_item_tvJob_top_margin"
+                android:text="药剂科主任"
+                android:textColor="#FF4A4A4A"
+                android:textSize="@dimen/list_item_tvJob_size" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_item_tvDesc_height"
+                android:layout_marginBottom="@dimen/list_item_tvDesc_bottom_margin"
+                android:layout_marginTop="@dimen/list_item_tvDesc_top_margin"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:text="从事药剂科临床工作10余年,层进修北京协和医院,具有丰富的临床工作经验和较强的危急症急救能力 从事药剂科临床工作10余年,层进修北京协和医院,具有丰富的临床工作经验和较强的危急症急救能力"
+                android:textColor="#FF9B9B9B"
+                android:textSize="@dimen/list_item_tvDesc_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="3" >
+
+    <TextView
+        android:id="@+id/tvDept"
+        android:layout_width="@dimen/dept_item_width"
+        android:layout_height="@dimen/dept_item_height"
+        android:background="@drawable/dept_item_bg"
+        android:gravity="center"
+        android:text="外科"
+        android:textColor="#FF666666"
+        android:textSize="@dimen/dept_item_text_size" />
+
+</LinearLayout>

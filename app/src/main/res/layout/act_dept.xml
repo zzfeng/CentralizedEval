@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="100"
+        android:background="#FF0893A8" >
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="请选择为您服务的科室"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/title_text_size" />
+
+        <ImageView
+            android:id="@+id/title_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="@dimen/title_img_right_margin"
+            android:src="@drawable/top" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1820" >
+
+        <GridView
+            android:id="@+id/gridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dept_gv_margin_top"
+            android:gravity="center"
+            android:horizontalSpacing="@dimen/dept_gv_hor_spac"
+            android:numColumns="3"
+            android:paddingLeft="@dimen/dept_gv_margin_left"
+            android:paddingRight="@dimen/dept_gv_margin_right"
+            android:verticalSpacing="@dimen/dept_gv_ver_spac" >
+        </GridView>
+
+        <Button
+            android:id="@+id/close"
+            android:layout_width="@dimen/btn_back_width"
+            android:layout_height="@dimen/btn_back_width"
+            android:layout_alignBottom="@+id/gridView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/dept_btn_close_bottom_margin"
+            android:background="@drawable/btn_close"
+            android:onClick="close" />
+    </RelativeLayout>
+
+</LinearLayout>

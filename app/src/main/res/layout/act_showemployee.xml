@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="100"
+            android:background="#FF0893A8" >
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="请选择为您服务的医务人员"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/title_text_size" />
+
+            <ImageView
+                android:id="@+id/title_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/title_img_right_margin"
+                android:src="@drawable/top" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/title_layout"
+            android:layout_weight="1820" >
+
+            <FrameLayout
+                android:id="@+id/fl"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+            </FrameLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/btn_back_width"
+        android:layout_height="@dimen/btn_back_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/showemp_btn_back_bottom_margin"
+        android:layout_marginLeft="@dimen/showemp_btn_back_left_margin"
+        android:background="@drawable/btn_back"
+        android:onClick="back" />
+
+    <Button
+        android:id="@+id/btn_gallery"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/showemp_btn_bottom_margin"
+        android:layout_marginRight="@dimen/showemp_btn_right_margin"
+        android:background="@drawable/btn_galery"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btn_list"
+       android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/showemp_btn_bottom_margin"
+        android:layout_marginRight="@dimen/showemp_btn_right_margin"
+        android:background="@drawable/btn_list"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btn_grid"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/showemp_btn_bottom_margin"
+        android:layout_marginRight="@dimen/showemp_btn_right_margin"
+        android:background="@drawable/btn_grid"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="@dimen/btn_back_width"
+        android:layout_height="@dimen/btn_back_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/showemp_btn_add_bottom_margin"
+        android:layout_marginRight="@dimen/showemp_btn_add_right_margin"
+        android:background="@drawable/btn_add" />
+
+</RelativeLayout>

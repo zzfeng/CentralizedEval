@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".FillAdvise" >
+
+    <!-- android:background="@drawable/advise_page" -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="100"
+            android:background="#0893A8" >
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="请留下您的宝贵意见"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/title_text_size" />
+
+            <ImageView
+                android:id="@+id/title_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/title_img_right_margin"
+                android:src="@drawable/top" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/lin_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_above="@+id/idAdviseCommit"
+            android:layout_below="@+id/title_layout"
+            android:layout_margin="@dimen/fill_ad_lin_list_margin"
+            android:layout_weight="1800"
+            android:background="@drawable/white_rounded_bg"
+            android:orientation="vertical"
+            android:padding="@dimen/lin_list_padding" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical" >
+
+                <ImageView
+                    android:id="@+id/iv_message"
+                    android:layout_width="@dimen/iv_message_width"
+                    android:layout_height="@dimen/iv_message_height"
+                    android:src="@drawable/message" />
+
+                <TextView
+                    android:id="@+id/tv_advise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fill_ad_tv_left_margin"
+                    android:text="意见调查"
+                    android:textColor="#FF0893A8"
+                    android:textSize="@dimen/tv_advise_text_size" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/fill_ad_line_margin"
+                android:layout_marginTop="@dimen/fill_ad_line_margin"
+                android:background="#FF0893A8" />
+
+            <ListView
+                android:id="@+id/idListView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fill_ad_lv_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:divider="@null"
+                android:scrollbarFadeDuration="0" >
+            </ListView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/idAdviseCommit"
+        android:layout_width="@dimen/idAdviseCommit_width"
+        android:layout_height="@dimen/idAdviseCommit_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/idAdviseCommit_bottom_margin"
+        android:layout_marginTop="@dimen/fill_ad_line_margin"
+        android:background="@drawable/btn_commit"
+        android:textSize="@dimen/fill_ad_textSize" />
+
+    <!-- android:text="@string/commit_button" -->
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="@dimen/btn_finish_w_h"
+        android:layout_height="@dimen/btn_finish_w_h"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="@dimen/btn_finish_bottom_margin"
+        android:layout_marginLeft="@dimen/btn_finish_left_margin"
+        android:background="@drawable/btn_back"
+        android:text="" />
+
+</RelativeLayout>

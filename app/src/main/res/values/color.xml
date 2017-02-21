@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="no_back">#00ffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="orange">#FFDB60</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="bt_bg_login">#FF7ED321</color>
+    <color name="bt_bg_login_press">#417505</color>
+</resources>
