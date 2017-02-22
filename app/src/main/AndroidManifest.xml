@@ -32,6 +32,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".activity.SplashAct"
             android:label="@string/app_name"
@@ -88,6 +89,10 @@
                 <action android:name="refreshDept" />
             </intent-filter>
         </receiver>
+        <meta-data android:name="design_width" android:value="1080">
+        </meta-data>
+        <meta-data android:name="design_height" android:value="1920">
+        </meta-data>
     </application>
 
 </manifest>

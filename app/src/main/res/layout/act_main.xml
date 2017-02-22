@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -9,12 +9,12 @@
     <!-- android:layout_height="0dp" -->
     <!-- android:background="@drawable/splash_head" /> -->
 
-    <LinearLayout
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <RelativeLayout
+        <com.zhy.autolayout.AutoRelativeLayout
             android:id="@+id/title_layout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -39,9 +39,9 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginRight="@dimen/title_img_right_margin"
                 android:src="@drawable/top" />
-        </RelativeLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_above="@+id/lin_bottom"
@@ -61,9 +61,9 @@
                 android:name="com.sundyn.centralizedeval.plugin.AdviseItem"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:id="@+id/lin_bottom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -72,7 +72,7 @@
             android:layout_weight="265"
             android:orientation="horizontal" >
 
-            <LinearLayout
+            <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -84,7 +84,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="67" />
 
-                <LinearLayout
+                <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="120"
@@ -106,15 +106,15 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="81" />
-                </LinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="65" />
-            </LinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
 
-            <LinearLayout
+            <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -126,7 +126,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="67" />
 
-                <LinearLayout
+                <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="120"
@@ -148,13 +148,13 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="81" />
-                </LinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
 
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="65" />
-            </LinearLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
 
             <!-- <LinearLayout -->
             <!-- android:layout_width="0dp" -->
@@ -168,9 +168,9 @@
             <!-- android:layout_height="wrap_content" -->
             <!-- android:background="@drawable/btn_yijian" /> -->
             <!-- </LinearLayout> -->
-        </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
 
-        <LinearLayout
+        <com.zhy.autolayout.AutoLinearLayout
             android:layout_marginBottom="3dp"
             android:id="@+id/lin_sundyn"
             android:layout_width="match_parent"
@@ -190,8 +190,8 @@
                 android:text="商鼎技术版权所有"
                 android:textColor="#FF9B9B9B"
                 android:textSize="@dimen/tv_sundyn_text_size" />
-        </LinearLayout>
-    </LinearLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
 
     <android.gesture.GestureOverlayView
         android:id="@+id/gestureOverlayView"
@@ -205,4 +205,4 @@
         android:uncertainGestureColor="#00000000" >
     </android.gesture.GestureOverlayView>
 
-</RelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

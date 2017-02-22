@@ -33,4 +33,5 @@ dependencies {
     compile files('libs/volley.jar')
     compile 'com.mylhyl:superDialog:1.0.11'
     compile 'com.bigkoo:alertview:1.0.3'
+    compile 'com.zhy:autolayout:1.4.5'
 }

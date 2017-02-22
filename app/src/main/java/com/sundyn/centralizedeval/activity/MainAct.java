@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +36,7 @@ import com.sundyn.centralizedeval.utils.FileUtil;
 import com.sundyn.centralizedeval.utils.LocalData;
 import com.sundyn.centralizedeval.utils.UIUtil;
 import com.sundyn.centralizedeval.views.CustomProgressDialog;
+import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class MainAct extends FragmentActivity implements OnItemClickListener,OnD
     private Button mBtn_pingjia;
     private Button mBtn_yijian;
     private TextView tvTitle;
-    private RelativeLayout titleLayout;
+    private AutoRelativeLayout titleLayout;
     private LoginBean loginBean;
     private AlertView alertView, alertView2;
     private List<DetailBean> detailList;
@@ -146,7 +146,7 @@ public class MainAct extends FragmentActivity implements OnItemClickListener,OnD
 
     private void initView() {
 
-        titleLayout = (RelativeLayout) findViewById(R.id.title_layout);
+        titleLayout = (AutoRelativeLayout) findViewById(R.id.title_layout);
 
         tvTitle = (TextView) findViewById(R.id.title_text);
         mBtn_pingjia = (Button) findViewById(R.id.btn_pingjia);
