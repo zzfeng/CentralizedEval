@@ -5,14 +5,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.view.View.OnClickListener;
 import com.sundyn.centralizedeval.R;
+import com.sundyn.centralizedeval.activity.FillAdsAct;
+import com.sundyn.centralizedeval.base.BarBaseItem;
 
 /**
  * Created by Administrator on 2017/2/21.
  */
 
-public class BarAdviseItem extends BarBaseItem{
+public class BarAdviseItem extends BarBaseItem {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -22,7 +24,7 @@ public class BarAdviseItem extends BarBaseItem{
 
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), FillAds.class));
+                startActivity(new Intent(getActivity(), FillAdsAct.class));
             }
         });
 

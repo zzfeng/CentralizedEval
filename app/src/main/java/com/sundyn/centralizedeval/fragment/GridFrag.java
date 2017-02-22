@@ -2,6 +2,7 @@ package com.sundyn.centralizedeval.fragment;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -35,7 +36,7 @@ public class GridFrag extends Fragment {
     private int deptPos;
     private MyAdapter mAdapter;
     private BitmapDisplayConfig displayConfig;
-    private Config config;
+    private Bitmap.Config config;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class GridFrag extends Fragment {
         mAdapter = new MyAdapter();
         mGridView.setAdapter(mAdapter);
 
-        mGridView.setOnItemClickListener(new OnItemClickListener() {
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {

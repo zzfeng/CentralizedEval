@@ -33,7 +33,7 @@ public class ShellUtil {
      * @param command command
      * @param isRoot whether need to run with root
      * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
+     * @see //ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String command, boolean isRoot) {
         return execCommand(new String[] { command }, isRoot, true);
@@ -45,7 +45,7 @@ public class ShellUtil {
      * @param commands command list
      * @param isRoot whether need to run with root
      * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
+     * @see //ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(List<String> commands, boolean isRoot) {
         return execCommand(commands == null ? null : commands.toArray(new String[] {}), isRoot, true);
@@ -57,7 +57,7 @@ public class ShellUtil {
      * @param commands command array
      * @param isRoot whether need to run with root
      * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
+     * @see //ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String[] commands, boolean isRoot) {
         return execCommand(commands, isRoot, true);
@@ -70,7 +70,7 @@ public class ShellUtil {
      * @param isRoot whether need to run with root
      * @param isNeedResultMsg whether need result msg
      * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
+     * @see //ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(String command, boolean isRoot, boolean isNeedResultMsg) {
         return execCommand(new String[] { command }, isRoot, isNeedResultMsg);
@@ -83,7 +83,7 @@ public class ShellUtil {
      * @param isRoot whether need to run with root
      * @param isNeedResultMsg whether need result msg
      * @return
-     * @see ShellUtils#execCommand(String[], boolean, boolean)
+     * @see //ShellUtils#execCommand(String[], boolean, boolean)
      */
     public static CommandResult execCommand(List<String> commands, boolean isRoot, boolean isNeedResultMsg) {
         return execCommand(commands == null ? null : commands.toArray(new String[] {}), isRoot, isNeedResultMsg);

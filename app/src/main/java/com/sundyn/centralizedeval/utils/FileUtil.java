@@ -88,7 +88,7 @@ public class FileUtil {
 
     /** 获取应用的cache目录 */
     public static String getCachePath() {
-        File f = UIUtils.getContext().getCacheDir();
+        File f = UIUtil.getContext().getCacheDir();
         if (null == f) {
             return null;
         } else {
@@ -132,11 +132,11 @@ public class FileUtil {
                 srcFile.delete();
             }
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
             return false;
         } finally {
-            IOUtils.close(out);
-            IOUtils.close(in);
+            IOUtil.close(out);
+            IOUtil.close(in);
         }
         return true;
     }
@@ -144,13 +144,13 @@ public class FileUtil {
     /** 判断文件是否可写 */
     public static boolean isWriteable(String path) {
         try {
-            if (StringUtils.isEmpty(path)) {
+            if (StringUtil.isEmpty(path)) {
                 return false;
             }
             File f = new File(path);
             return f.exists() && f.canWrite();
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
             return false;
         }
     }
@@ -162,7 +162,7 @@ public class FileUtil {
             Runtime runtime = Runtime.getRuntime();
             runtime.exec(command);
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
         }
     }
 
@@ -194,10 +194,10 @@ public class FileUtil {
                 res = true;
             }
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
         } finally {
-            IOUtils.close(fos);
-            IOUtils.close(is);
+            IOUtil.close(fos);
+            IOUtil.close(is);
         }
         return res;
     }
@@ -230,9 +230,9 @@ public class FileUtil {
                 res = true;
             }
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
         } finally {
-            IOUtils.close(raf);
+            IOUtil.close(raf);
         }
         return res;
     }
@@ -258,7 +258,7 @@ public class FileUtil {
      * @param comment 该键值对的注释
      */
     public static void writeProperties(String filePath, String key, String value, String comment) {
-        if (StringUtils.isEmpty(key) || StringUtils.isEmpty(filePath)) {
+        if (StringUtil.isEmpty(key) || StringUtil.isEmpty(filePath)) {
             return;
         }
         FileInputStream fis = null;
@@ -275,16 +275,16 @@ public class FileUtil {
             fos = new FileOutputStream(f);
             p.store(fos, comment);
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
         } finally {
-            IOUtils.close(fis);
-            IOUtils.close(fos);
+            IOUtil.close(fis);
+            IOUtil.close(fos);
         }
     }
 
     /** 根据值读取 */
     public static String readProperties(String filePath, String key, String defaultValue) {
-        if (StringUtils.isEmpty(key) || StringUtils.isEmpty(filePath)) {
+        if (StringUtil.isEmpty(key) || StringUtil.isEmpty(filePath)) {
             return null;
         }
         String value = null;
@@ -299,9 +299,9 @@ public class FileUtil {
             p.load(fis);
             value = p.getProperty(key, defaultValue);
         } catch (IOException e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
         } finally {
-            IOUtils.close(fis);
+            IOUtil.close(fis);
         }
         return value;
     }
@@ -309,7 +309,7 @@ public class FileUtil {
     /** 把字符串键值对的map写入文件 */
     public static void writeMap(String filePath, Map<String, String> map, boolean append,
                                 String comment) {
-        if (map == null || map.size() == 0 || StringUtils.isEmpty(filePath)) {
+        if (map == null || map.size() == 0 || StringUtil.isEmpty(filePath)) {
             return;
         }
         FileInputStream fis = null;
@@ -328,10 +328,10 @@ public class FileUtil {
             fos = new FileOutputStream(f);
             p.store(fos, comment);
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
         } finally {
-            IOUtils.close(fis);
-            IOUtils.close(fos);
+            IOUtil.close(fis);
+            IOUtil.close(fos);
         }
     }
 
@@ -340,7 +340,7 @@ public class FileUtil {
             "rawtypes", "unchecked"
     })
     public static Map<String, String> readMap(String filePath, String defaultValue) {
-        if (StringUtils.isEmpty(filePath)) {
+        if (StringUtil.isEmpty(filePath)) {
             return null;
         }
         Map<String, String> map = null;
@@ -355,9 +355,9 @@ public class FileUtil {
             p.load(fis);
             map = new HashMap<String, String>((Map)p);// 因为properties继承了map，所以直接通过p来构造一个map
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
         } finally {
-            IOUtils.close(fis);
+            IOUtil.close(fis);
         }
         return map;
     }
@@ -381,11 +381,11 @@ public class FileUtil {
                 out.flush();
             }
         } catch (Exception e) {
-            LogUtils.e(e);
+            LogUtil.e(e);
             return false;
         } finally {
-            IOUtils.close(in);
-            IOUtils.close(out);
+            IOUtil.close(in);
+            IOUtil.close(out);
         }
         if (delete) {
             file.delete();

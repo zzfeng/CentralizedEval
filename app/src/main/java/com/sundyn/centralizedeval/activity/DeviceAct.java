@@ -20,6 +20,9 @@ import com.sundyn.centralizedeval.R;
 import com.sundyn.centralizedeval.base.BaseAct;
 import com.sundyn.centralizedeval.commen.CommenUnit;
 import com.sundyn.centralizedeval.utils.LocalData;
+import com.sundyn.centralizedeval.utils.PackageUtil;
+import com.sundyn.centralizedeval.utils.PrefUtil;
+import com.sundyn.centralizedeval.utils.SystemUtil;
 
 /**
  * Created by Administrator on 2017/2/21.
@@ -149,9 +152,9 @@ public class DeviceAct extends BaseAct implements View.OnClickListener {
     }
 
     private void initData() {
-        tvMac.setText(SystemUtils.getMacAddress());
-        tvVer.setText(PackageUtils.getVersionName());
-        tvIp.setText(SystemUtils.getLocalIpAddress());
+        tvMac.setText(SystemUtil.getMacAddress());
+        tvVer.setText(PackageUtil.getVersionName());
+        tvIp.setText(SystemUtil.getLocalIpAddress());
         etServerIp.setText(LocalData.settings.serverIp);
         etServerPort.setText(LocalData.settings.serverPort);
         etOrgUrl.setText(LocalData.settings.orgUrl);
@@ -251,7 +254,7 @@ public class DeviceAct extends BaseAct implements View.OnClickListener {
     private void changeSkin(View view) {
         String color = view.getTag().toString();
         LocalData.skinColor = Color.parseColor(color);
-        PrefUtils.getInstance().putString("skinColor", color);
+        PrefUtil.getInstance().putString("skinColor", color);
         sendBroadcast(new Intent(LocalData.ACTION_SKIN_CHANGE));
     }
 

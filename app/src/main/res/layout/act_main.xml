@@ -53,13 +53,13 @@
 
             <fragment
                 android:id="@+id/sdsItem"
-                android:name="com.evalterminal.m8.plugin.AdsItem"
+                android:name="com.sundyn.centralizedeval.plugin.AdsItem"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
             <fragment
                 android:id="@+id/adviseItem"
-                android:name="com.evalterminal.m8.plugin.AdviseItem"
+                android:name="com.sundyn.centralizedeval.plugin.AdviseItem"
                 android:layout_width="0dp"
                 android:layout_height="0dp" />
         </LinearLayout>

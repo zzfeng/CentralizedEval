@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.sundyn.centralizedeval.R;
 import com.sundyn.centralizedeval.bean.LoginBean;
+import com.sundyn.centralizedeval.views.CustomProgressDialog;
 
 /**
  * Created by Administrator on 2017/2/21.

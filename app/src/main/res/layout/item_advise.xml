@@ -1,10 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/FrameLayout1"
     android:layout_width="@dimen/item_ad_fraLay_width"
     android:layout_height="@dimen/item_ad_fraLay_height"
     android:background="#671400"
-    tools:context=".WelcomeItem" >
+    >
 
     <ImageView
         android:id="@+id/idImage"

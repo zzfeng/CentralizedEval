@@ -12,13 +12,18 @@ import android.os.Parcelable;
 import android.util.Log;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.widget.ImageView;
 
 import com.sundyn.centralizedeval.R;
 import com.sundyn.centralizedeval.base.BaseAct;
 import com.sundyn.centralizedeval.commen.CommenUnit;
+import com.sundyn.centralizedeval.utils.DatabaseUtil;
+import com.sundyn.centralizedeval.utils.FileUtil;
 import com.sundyn.centralizedeval.utils.LocalData;
+import com.sundyn.centralizedeval.utils.PrefUtil;
+import com.sundyn.centralizedeval.utils.SystemUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -125,7 +130,7 @@ public class SplashAct extends BaseAct {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_splash);
         bg = (ImageView)findViewById(R.id.bg);
-        CommenUnit.mID = SystemUtils.getMacAddress();
+        CommenUnit.mID = SystemUtil.getMacAddress();
         CommenUnit.preInitApp(getApplicationContext());
         // 初始化数据库
         initDatabase();
@@ -194,7 +199,7 @@ public class SplashAct extends BaseAct {
     private Intent intent;
     private void initDatabase() {
         String path = CommenUnit.WORK_DIR + "data.db";
-        CommenUnit.mDatabase = new DatabaseManager(CommenUnit.mContext);
+        CommenUnit.mDatabase = new DatabaseUtil(CommenUnit.mContext);
         if (new File(path).exists()) {
             CommenUnit.mDatabase.openOrCreate(path);
             // Log.i(TAG, "数据库版本：" + CommenUnit.mDatabase.getDbVersion());
@@ -203,7 +208,7 @@ public class SplashAct extends BaseAct {
         }
 
         try {
-            FileUtils.copyAssetsFile(this, "data.db", path);
+            FileUtil.copyAssetsFile(this, "data.db", path);
             CommenUnit.mDatabase.openOrCreate(path);
         } catch (Exception e) {
             e.printStackTrace();
@@ -211,12 +216,11 @@ public class SplashAct extends BaseAct {
     }
 
     private void initConfig() {
-        LocalData.skinColor = Color.parseColor(PrefUtils.getInstance().getString("skinColor",
+        LocalData.skinColor = Color.parseColor(PrefUtil.getInstance().getString("skinColor",
                 "#FF0893A8"));
         if (!LocalData.readSettings()) {
             try {
-                FileUtils
-                        .copyAssetsFile(this, "settings.xml", CommenUnit.WORK_DIR + "settings.xml");
+                FileUtil.copyAssetsFile(this, "settings.xml", CommenUnit.WORK_DIR + "settings.xml");
                 LocalData.readSettings();
             } catch (Exception e) {
                 Log.e(TAG, e.toString());

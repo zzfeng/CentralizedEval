@@ -61,7 +61,7 @@ public class ListFrag extends Fragment {
 
 
         // 创建数据bean
-        mListView.setOnItemClickListener(new OnItemClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3) {
                 Intent intent = new Intent(getActivity(), EvalAct.class);

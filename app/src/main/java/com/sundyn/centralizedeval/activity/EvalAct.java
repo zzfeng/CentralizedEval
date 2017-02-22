@@ -11,18 +11,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.xmlpull.v1.XmlPullParser;
-
-import android.widget.LinearLayout.LayoutParams;
 import com.lidroid.xutils.BitmapUtils;
 import com.sundyn.centralizedeval.R;
 import com.sundyn.centralizedeval.base.BaseAct;
@@ -31,6 +24,15 @@ import com.sundyn.centralizedeval.bean.UserBean;
 import com.sundyn.centralizedeval.commen.CommenUnit;
 import com.sundyn.centralizedeval.utils.ButtonParser;
 import com.sundyn.centralizedeval.utils.LocalData;
+import com.sundyn.centralizedeval.views.EvalDlg;
+
+import org.xmlpull.v1.XmlPullParser;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2017/2/21.
@@ -270,7 +272,7 @@ public class EvalAct extends BaseAct implements ButtonParser,View.OnClickListene
     // 显示评价对话框
     public void showEvalDlg(final int id) {
         EvalDlg evalDlg = new EvalDlg(EvalAct.this);
-        evalDlg.setOkBtnClickListener(new OnOkBtnClickListener() {
+        evalDlg.setOkBtnClickListener(new EvalDlg.OnOkBtnClickListener() {
             @Override
             public void onClick(String msg) {
                 ButtonBean bean = mList.get(id);

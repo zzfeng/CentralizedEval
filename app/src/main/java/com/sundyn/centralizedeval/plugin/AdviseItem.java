@@ -1,421 +1,216 @@
 package com.sundyn.centralizedeval.plugin;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.media.MediaPlayer;
+import android.graphics.Camera;
+import android.graphics.Matrix;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ImageSwitcher;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.Transformation;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
-import com.sundyn.centralizedeval.utils.AdsUpdate;
 import com.sundyn.centralizedeval.R;
-import com.sundyn.centralizedeval.utils.ADUtil;
-import com.sundyn.centralizedeval.views.AdsVideo;
-import com.sundyn.centralizedeval.views.VerticalScrollTextView;
+import com.sundyn.centralizedeval.activity.FillAdviseAct;
+import com.sundyn.centralizedeval.commen.CommenUnit;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.io.File;
 
 /**
  * Created by Administrator on 2017/2/21.
  */
 
-public class AdviseItem extends Fragment implements ViewFactory {
-    private final String TAG = "AdsItem";
-    private ImageSwitcher mSwitcher; // 用于控制ImageView中的广告图片动画切换
-    private AdsVideo mVideo;
-    private VerticalScrollTextView mReader;
-    private boolean mIsVideo = false; // 当前媒体类型是否是视频
-    // private boolean isRefresh;//是否刷新广告媒体
-    private int mPlayPosition; // 当前播放位置
-    private ArrayList<String> typeList; // 广告媒体类型
-    private ArrayList<String> urlList; // 广告媒体路径
-    private ArrayList<String> timeList; // 广告媒体播放时间
-    private ArrayList<String> startList;
-    private ArrayList<String> endList;
-    private List<String> lst;// 文本广告媒体内容
-    private int indexOfList;
-    private Timer timer;
-    private long mStartTime;
-    private long mPauseTime;
-    private int mAdTime;
-    private BroadcastReceiver mReceiver; // 接收命令广播
+public class AdviseItem extends Fragment{
 
-    class AdTimerTask extends TimerTask {
-        @Override
-        public void run() {
-            ADUtil.setOrderAnimation(mSwitcher);
-            handler.sendEmptyMessage(0);
-        }
-    }
-
-    private RadioGroup indiRadioGroup; // 显示指示器的布局.since1.3.3
-
-    private Handler mHandler = new Handler() {
-
+    // 定时请求服务器通知信息
+    private Handler mAdviseLoop = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            startTimer(indexOfList - 1);
-        }
-
-    };
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-
-            mReader.threadPause();// 暂停线程
-
-            // 列表为空则返回
-            if (urlList.isEmpty()) {
-                Log.i(TAG, "handleMessage : Ad list is empty");
-                mSwitcher.setImageDrawable(null);
-                mIsVideo = false;
-                if (mVideo.isPlaying()) {
-                    mVideo.stopPlayback();
-                }
-                mVideo.setVisibility(View.INVISIBLE);
-                indiRadioGroup.setVisibility(View.GONE);
-                return;
-            }
-
-            indiRadioGroup.setVisibility(View.VISIBLE);
-            if (ADUtil.curPos != -1) {
-                indexOfList = ADUtil.curPos - 1;
-                ADUtil.curPos = -1;
-            } else {
-                // 列表循环
-                if (indexOfList >= urlList.size()) {
-                    indexOfList = 0;
-                } else if (indexOfList < 0) {
-                    indexOfList = urlList.size() - 1;
-                }
-            }
-
-            String strTemp = typeList.get(indexOfList);
-            indiRadioGroup.getChildAt(indexOfList).performClick();
-            // Log.d("sssssss", a+"dddd");
-            if (strTemp.toLowerCase().equalsIgnoreCase("img") || strTemp.equalsIgnoreCase("IMAGE")) {
-                // 如果是图片
-                mIsVideo = false;
-                if (mVideo.isPlaying()) {
-                    mVideo.stopPlayback();
-                }
-                mVideo.setVisibility(View.INVISIBLE);
-                mReader.setVisibility(View.INVISIBLE);
-                mSwitcher.setVisibility(View.VISIBLE);
-                // 调整各控件z轴顺序
-                mSwitcher.bringToFront();
-
-                Bitmap b = PanoCache.getBitmapFromMem(indexOfList + "");
-                if (b == null) {
-                    b = CommenUnit.getLoacalBitmap(urlList.get(indexOfList), true,
-                            mSwitcher.getLayoutParams().width);
-
-                    if (b != null) {
-                        PanoCache.addBitmapToMem(indexOfList + "", b);
-                        mSwitcher.setImageDrawable(new BitmapDrawable(a.getResources(), b));
-                    } else {
-                        Log.e(TAG, "handleMessage : Not find imagefile " + urlList.get(indexOfList));
+            switch (msg.what) {
+                case 0:
+                    // 角标动画
+                    if (getView() == null) {
+                        return;
                     }
+                    ImageView iv = (ImageView)getView().findViewById(R.id.idImage);
+                    Rotate3dAnimation ra = new Rotate3dAnimation(0f, -360f, iv.getWidth() / 2f,
+                            iv.getHeight() / 2f, 0f, false);
+                    ra.setDuration(4000);
+                    iv.startAnimation(ra);
 
-                } else {
-                    mSwitcher.setImageDrawable(new BitmapDrawable(a.getResources(), b));
-                }
+                    if ("1".equals(CommenUnit.m8Config.type) && CommenUnit.isNetworkAvail) { // 如果是网络连接模式，直接从服务器获取
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                // 合成服务器地址
+                                // String url =
+                                // CommenUnit.m8Config.getServerAddr() +
+                                // "adviceDownload";
+                                String url = CommenUnit.m8Config.getServerAddr()
+                                        + "estime/android_enquest/questions?mac=" + CommenUnit.mID;
+                                boolean b = CommenUnit.requestServerByGet(url, null,
+                                        CommenUnit.ADVISE_DIR + "advise_new.xml");
+                                File adviseOld = new File(CommenUnit.ADVISE_DIR + "advise.xml");
+                                File adviseNew = new File(CommenUnit.ADVISE_DIR + "advise_new.xml");
+                                // // 如果接收到了advise.db，删除协议发送的XML
+                                // SharedPreferences sp =
+                                // getActivity().getApplicationContext()
+                                // .getSharedPreferences("DemoItem",
+                                // Context.MODE_PRIVATE);
+                                // String adviceFileName =
+                                // sp.getString("advise", "advise.xml");
+                                // File adviseXML = new File(CommenUnit.WORK_DIR
+                                // + adviceFileName);
+                                if (b && adviseNew.exists()) {
+                                    adviseOld.delete();
+                                    adviseNew.renameTo(adviseOld);
+                                    // if (adviseXML.exists()) {
+                                    // adviseXML.delete();
+                                    // }
+                                } else {
+                                    adviseNew.delete();
+                                }
+                                mAdviseLoop.sendEmptyMessageDelayed(0, 2 * 60 * 1000);
+                            }
+                        }).start();
 
-                mAdTime = 5000;
-                try {
-                    mAdTime = Integer.parseInt(timeList.get(indexOfList++));
-                    timer.schedule(new AdTimerTask(), mAdTime);
-                } catch (Exception e) {
-                    Log.i(TAG, "计时器重启失败" + e);
-                }
-                mStartTime = System.currentTimeMillis();
-
-            } else if (strTemp.equalsIgnoreCase("video")) {
-                mSwitcher.setImageResource(android.R.color.black);
-                // 如果是视频
-                mVideo.setVisibility(View.VISIBLE);
-                mReader.setVisibility(View.INVISIBLE);
-                mVideo.bringToFront();
-                mVideo.setVideoPath(urlList.get(indexOfList));
-                mVideo.start();
-                mIsVideo = true;
-                // 视频没有更新mMemBmp[0]，所以清除mMemBmp[1]
-                // mMemBmp[1] = null;
-                // 跳过本次计时器，视屏播放完触发下个广告
-                indexOfList++;
-            } else if (strTemp.equalsIgnoreCase("text")) {
-                mIsVideo = false;
-                if (mVideo.isPlaying()) {
-                    mVideo.stopPlayback();
-                }
-                mVideo.setVisibility(View.INVISIBLE);
-                mSwitcher.setVisibility(View.INVISIBLE);
-                mReader.setVisibility(View.VISIBLE);
-                // mReader.bringToFront();
-                if (lst == null || lst.size() == 0) {
-                    lst = ADUtil.readTxtFile(urlList.get(indexOfList));
-                }
-                // 给View传递数据
-                mReader.setList(lst);
-                // mReader.setContent(content);
-                // 更新View
-                mReader.updateUI(mHandler);
-                // mReader.setText(ReadTxtFile(urlList.get(indexOfList)));
-                // mReader.setMovementMethod(ScrollingMovementMethod.getInstance());
-                indexOfList++;
-
+                    }
+                    break;
             }
-
-            super.handleMessage(msg);
         }
     };
-
-    /**
-     * 开启定时器
-     */
-    public void startTimer(int indexOfList) {
-        mAdTime = 5000;
-        try {
-            mAdTime = Integer.parseInt(timeList.get(indexOfList));
-            timer.schedule(new AdTimerTask(), mAdTime);
-        } catch (Exception e) {
-            Log.i(TAG, "计时器重启失败" + e);
-        }
-        mStartTime = System.currentTimeMillis();
-    }
-
-    /**
-     * 初始化ads.xml对应的所有广告数据结构
-     */
-
-    private void reInitImageList() {
-        // 重载缓存资源
-        // mBmpMap = new HashMap<Integer, WeakReference<BitmapDrawable>>(); //
-        // 广告图片弱引用管理器
-        PanoCache.removeAll();
-        lst = null;
-        timer.cancel();
-        ADUtil.initImageList(typeList, urlList, timeList, startList, endList);
-        ADUtil.initIndicator(typeList.size(), 0, indiRadioGroup, getActivity());// 重新初始化指示器
-        timer = new Timer();
-        timer.schedule(new AdTimerTask(), 500);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View parent = inflater.inflate(R.layout.item_ads, null);
-        indiRadioGroup = (RadioGroup)parent.findViewById(R.id.indicator);
-        //initItem();
-
-        // 初始化广告列表
-        typeList = new ArrayList<String>();
-        urlList = new ArrayList<String>();
-        timeList = new ArrayList<String>();
-        startList = new ArrayList<String>();
-        endList = new ArrayList<String>();
-        indexOfList = 0;
-        ADUtil.initImageList(typeList, urlList, timeList, startList, endList);
-        ADUtil.initIndicator(typeList.size(), 0, indiRadioGroup, getActivity());
-        // 获取广告控件
-        // mSwitcher = new ImageSwitcher(this);
-        mSwitcher = (ImageSwitcher)parent.findViewById(R.id.idAdsSwicher);
-        mSwitcher.setFactory(this);
-        mVideo = (AdsVideo)parent.findViewById(R.id.idAdsPlayer);
-        mReader = (VerticalScrollTextView)parent.findViewById(R.id.idAdsReader);
-
-        mVideo.setOnErrorListener(new OnErrorListener() {
-
-            @Override
-            public boolean onError(MediaPlayer mp, int what, int extra) {
-                mVideo.stopPlayback();
-                ADUtil.setOrderAnimation(mSwitcher);
-                handler.sendEmptyMessage(0);
-
-                return true;
-            }
-        });
-        mVideo.setOnCompletionListener(new OnCompletionListener() {
-
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                ADUtil.setOrderAnimation(mSwitcher);
-                handler.sendEmptyMessage(0);
-            }
-        });
-
-        final GestureDetector gest = new GestureDetector(a, new OnGestureListener() {
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public void onShowPress(MotionEvent e) {
-            }
-
-            @Override
-            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                return false;
-            }
-
-            @Override
-            public void onLongPress(MotionEvent e) {
-            }
-
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                if (e1.getX() > e2.getX()) {
-                    Log.i(TAG, "向左滑，下一张");
-                    ADUtil.setOrderAnimation(mSwitcher);
-                } else {
-                    Log.i(TAG, "向右滑，上一张");
-                    ADUtil.setInorderAnimation(mSwitcher);
-                    indexOfList -= 2;
-                }
-                if (timer != null) {
-                    timer.cancel();
-                    timer = new Timer();
-                }
-                handler.sendEmptyMessage(0);
-                return true;
-            }
-
-            @Override
-            public boolean onDown(MotionEvent e) {
-                return false;
-            }
-        });
-
-        // Item滑动事件响应
-        parent.setOnTouchListener(new OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (gest.onTouchEvent(event)) {
-                    return true;
-                }
-                return false;
-            }
-        });
-
-        // Item单机事件响应
+        View parent = inflater.inflate(R.layout.item_advise, null);
         parent.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if (urlList.size() == 0) {
-                    Toast.makeText(a, "广告媒体资源为空,请先添加资源", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                ADUtil.curPos = indexOfList;
-                Intent intent = new Intent(a, FillAds.class);
-                // clickAnim(intent);
-
+                Intent intent = new Intent(getActivity(), FillAdviseAct.class);
+                clickAnim(intent);
             }
         });
 
-        mReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context arg0, Intent arg1) {
-                reInitImageList();
-            }
-        };
-        a.registerReceiver(mReceiver, new IntentFilter("refreshads"));
+        mAdviseLoop.sendEmptyMessage(0);
 
-        AdsUpdate.getInstance().startAdsUpdate();
+        //initItem();
 
         return parent;
     }
+    public void clickAnim(final Intent intent) {
+        final AnimationSet set = new AnimationSet(true);
+        ScaleAnimation zoomIn = new ScaleAnimation(1f, 0.95f, 1f, 0.95f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        zoomIn.setDuration(200);
+        zoomIn.setFillAfter(true);
 
-    private Activity a;
+        AlphaAnimation aa = new AlphaAnimation(1f, 0.3f);
+        aa.setDuration(200);
+        aa.setFillAfter(true);
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        a = activity;
+        // ScaleAnimation zoomOut = new ScaleAnimation(0.95f, 1.01f, 0.95f,
+        // 1.01f,
+        // Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+        // 0.5f);
+        // zoomOut.setDuration(200);
+        // zoomOut.setStartOffset(200);
+        // zoomOut.setFillAfter(true);
+
+        set.addAnimation(zoomIn);
+        set.addAnimation(aa);
+        // set.addAnimation(zoomOut);
+        set.setAnimationListener(new AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                startActivity(intent);
+            }
+        });
+        getView().startAnimation(set);
+
     }
+    /**
+     * 自定义3d旋转动画
+     *
+     * @author Paul
+     */
+    private class Rotate3dAnimation extends Animation {
+        // 开始角度
+        private final float mFromDegrees;
+        // 结束角度
+        private final float mToDegrees;
+        // 中心点
+        private final float mCenterX;
+        private final float mCenterY;
+        private final float mDepthZ;
+        // 是否需要扭曲
+        private final boolean mReverse;
+        // 摄像头
+        private Camera mCamera;
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        long time = mStartTime + mAdTime - mPauseTime;
-        if (time < 0) {
-            time = 0;
+        public Rotate3dAnimation(float fromDegrees, float toDegrees, float centerX, float centerY,
+                                 float depthZ, boolean reverse) {
+            mFromDegrees = fromDegrees;
+            mToDegrees = toDegrees;
+            mCenterX = centerX;
+            mCenterY = centerY;
+            mDepthZ = depthZ;
+            mReverse = reverse;
         }
 
-        if (timer != null) {
-            timer.cancel();
-            timer = null;
+        @Override
+        public void initialize(int width, int height, int parentWidth, int parentHeight) {
+            super.initialize(width, height, parentWidth, parentHeight);
+            mCamera = new Camera();
         }
-        timer = new Timer();
 
-        if (ADUtil.curPos == -1) {
+        // 生成Transformation
+        @Override
+        protected void applyTransformation(float interpolatedTime, Transformation t) {
+            final float fromDegrees = mFromDegrees;
+            // 生成中间角度
+            float degrees = fromDegrees + ((mToDegrees - fromDegrees) * interpolatedTime);
 
-            if (mIsVideo) {
-                mVideo.setVideoPath(urlList.get(indexOfList - 1));
-                mVideo.start();
-                mVideo.seekTo(mPlayPosition);
+            final float centerX = mCenterX;
+            final float centerY = mCenterY;
+            final Camera camera = mCamera;
+
+            final Matrix matrix = t.getMatrix();
+
+            camera.save();
+            if (mReverse) {
+                camera.translate(0.0f, 0.0f, mDepthZ * interpolatedTime);
             } else {
-                timer.schedule(new AdTimerTask(), time);
+                camera.translate(0.0f, 0.0f, mDepthZ * (1.0f - interpolatedTime));
             }
-        } else {
-            if (mIsVideo) {
-                mVideo.setVideoPath(urlList.get(indexOfList - 1));
-                mVideo.start();
-                mVideo.seekTo(mPlayPosition);
-            }
-            // setOrderAnimation();
-            handler.sendEmptyMessage(0);
-            timer.schedule(new AdTimerTask(), 3000);
+            camera.rotateY(degrees);
+            // 取得变换后的矩阵
+            camera.getMatrix(matrix);
+            camera.restore();
+
+            matrix.preTranslate(-centerX, -centerY);
+            matrix.postTranslate(centerX, centerY);
         }
-
     }
 
-    @Override
-    public void onPause() {
-        mPauseTime = System.currentTimeMillis();
-        if (timer != null) {
-            timer.cancel();
-        }
-        if (mIsVideo) {
-            mPlayPosition = mVideo.getCurrentPosition();
-            mVideo.stopPlayback();
-        }
-        super.onPause();
-    }
 
-    @Override
-    public View makeView() {
-        ImageView iv = new ImageView(a);
-        iv.setScaleType(ScaleType.FIT_XY);
-        iv.setLayoutParams(new ImageSwitcher.LayoutParams(LayoutParams.MATCH_PARENT,
-                LayoutParams.MATCH_PARENT));
-
-        return iv;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        a.unregisterReceiver(mReceiver);
-    }
 }

@@ -1,16 +1,16 @@
 package com.sundyn.centralizedeval.activity;
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.app.FragmentTransaction;
-import android.view.animation.Animation.AnimationListener;
-
 import android.widget.RelativeLayout.LayoutParams;
+
 import com.sundyn.centralizedeval.R;
 import com.sundyn.centralizedeval.base.BaseAct;
 import com.sundyn.centralizedeval.bean.Department;
@@ -18,6 +18,7 @@ import com.sundyn.centralizedeval.fragment.GalleryFrag;
 import com.sundyn.centralizedeval.fragment.GridFrag;
 import com.sundyn.centralizedeval.fragment.ListFrag;
 import com.sundyn.centralizedeval.utils.LocalData;
+import com.sundyn.centralizedeval.utils.UIUtil;
 
 /**
  * Created by Administrator on 2017/2/21.
@@ -291,7 +292,7 @@ public class EmployeeAct extends BaseAct implements View.OnClickListener{
         // TODO Auto-generated method stub
         titleLayout.setBackgroundColor(LocalData.skinColor);
 
-        UIUtils.postDelayed(new Runnable() {
+        UIUtil.postDelayed(new Runnable() {
 
             @Override
             public void run() {

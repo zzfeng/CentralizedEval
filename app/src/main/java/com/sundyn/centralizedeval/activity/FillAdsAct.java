@@ -1,4 +1,4 @@
-package com.sundyn.centralizedeval.plugin;
+package com.sundyn.centralizedeval.activity;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -9,23 +9,36 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaPlayer.OnErrorListener;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.ViewSwitcher;
 
 import com.sundyn.centralizedeval.R;
+import com.sundyn.centralizedeval.commen.CommenUnit;
 import com.sundyn.centralizedeval.utils.ADUtil;
+import com.sundyn.centralizedeval.utils.PanoCache;
 import com.sundyn.centralizedeval.views.AdsVideo;
 import com.sundyn.centralizedeval.views.VerticalScrollTextView;
 
@@ -38,7 +51,8 @@ import java.util.TimerTask;
  * Created by Administrator on 2017/2/21.
  */
 
-public class FillAdvise extends Activity implements ViewFactory{
+public class FillAdsAct extends Activity implements ViewSwitcher.ViewFactory {
+
     private final String TAG = "FillAds";
     // private BroadcastReceiver mReceiver;
 
@@ -308,7 +322,7 @@ public class FillAdvise extends Activity implements ViewFactory{
 
     @Override
     public View makeView() {
-        ImageView iv = new ImageView(FillAds.this);
+        ImageView iv = new ImageView(FillAdsAct.this);
 
         iv.setScaleType(ScaleType.FIT_XY);
         iv.setLayoutParams(new ImageSwitcher.LayoutParams(LayoutParams.MATCH_PARENT,
@@ -389,7 +403,7 @@ public class FillAdvise extends Activity implements ViewFactory{
             @Override
             public void onClick(View v) {
                 ADUtil.curPos = indexOfList;
-                CommenUnit.clickExitAnim(v, FillAds.this);
+                CommenUnit.clickExitAnim(v, FillAdsAct.this);
             }
         });
         // 锟斤拷时锟斤拷锟截凤拷锟截硷拷
@@ -445,10 +459,10 @@ public class FillAdvise extends Activity implements ViewFactory{
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 if (e1.getX() > e2.getX()) {
-                    Log.i(TAG, "锟斤拷锟襟滑ｏ拷锟斤拷一锟斤拷");
+                    Log.i(TAG, "------");
                     ADUtil.setOrderAnimation(mSwitcher);
                 } else {
-                    Log.i(TAG, "锟斤拷锟揭伙拷锟斤拷锟斤拷一锟斤拷");
+                    Log.i(TAG, "======");
                     ADUtil.setInorderAnimation(mSwitcher);
                     indexOfList -= 2;
                 }
@@ -505,5 +519,6 @@ public class FillAdvise extends Activity implements ViewFactory{
         unregisterReceiver(mReceiver);
         super.onDestroy();
     }
+
 
 }

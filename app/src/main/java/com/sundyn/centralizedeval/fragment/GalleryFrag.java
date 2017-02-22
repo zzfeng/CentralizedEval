@@ -11,8 +11,10 @@ import android.widget.AdapterView;
 import com.lidroid.xutils.BitmapUtils;
 import com.sundyn.centralizedeval.R;
 import com.sundyn.centralizedeval.activity.EvalAct;
+import com.sundyn.centralizedeval.adapter.GalleryAdapter;
 import com.sundyn.centralizedeval.bean.UserBean;
 import com.sundyn.centralizedeval.utils.LocalData;
+import com.sundyn.centralizedeval.views.GalleryView;
 
 import java.util.List;
 
@@ -53,7 +55,7 @@ public class GalleryFrag extends Fragment{
         mAdapter = new GalleryAdapter(getActivity(), users);
         mGallery.setAdapter(mAdapter);
 
-        mGallery.setOnItemClickListener(new OnItemClickListener() {
+        mGallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {

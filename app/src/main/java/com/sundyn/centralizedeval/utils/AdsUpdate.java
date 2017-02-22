@@ -8,6 +8,7 @@ import android.util.Log;
 import com.m8.update.MD5Util;
 import com.sundyn.centralizedeval.bean.AdsBean;
 import com.sundyn.centralizedeval.bean.Advertise;
+import com.sundyn.centralizedeval.commen.CommenUnit;
 import com.thoughtworks.xstream.XStream;
 
 import java.io.BufferedWriter;

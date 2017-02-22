@@ -13,7 +13,6 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,16 +23,25 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bigkoo.alertview.AlertView;
+import com.bigkoo.alertview.OnDismissListener;
+import com.bigkoo.alertview.OnItemClickListener;
+import com.mylhyl.superdialog.SuperDialog;
 import com.sundyn.centralizedeval.R;
 import com.sundyn.centralizedeval.bean.LoginBean;
+import com.sundyn.centralizedeval.bean.LoginBean.DetailBean;
 import com.sundyn.centralizedeval.commen.CommenUnit;
-import com.sundyn.centralizedeval.plugin.FillAdvise;
+import com.sundyn.centralizedeval.update.DeptUpdate;
 import com.sundyn.centralizedeval.utils.DeviceUtil;
+import com.sundyn.centralizedeval.utils.FileUtil;
 import com.sundyn.centralizedeval.utils.LocalData;
+import com.sundyn.centralizedeval.utils.UIUtil;
+import com.sundyn.centralizedeval.views.CustomProgressDialog;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainAct extends FragmentActivity implements AdapterView.OnItemClickListener {
+public class MainAct extends FragmentActivity implements OnItemClickListener,OnDismissListener {
 
 
     private static String TAG = "MainAct";
@@ -144,7 +152,7 @@ public class MainAct extends FragmentActivity implements AdapterView.OnItemClick
         mBtn_pingjia = (Button) findViewById(R.id.btn_pingjia);
         mBtn_yijian = (Button) findViewById(R.id.btn_yijian);
         //
-        mBtn_pingjia.setOnClickListener(new OnClickListener() {
+        mBtn_pingjia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (LocalData.organization != null && LocalData.users != null
@@ -159,16 +167,16 @@ public class MainAct extends FragmentActivity implements AdapterView.OnItemClick
                     overridePendingTransition(R.anim.push_left_in,
                             R.anim.push_left_out);
                 } else {
-                    UIUtils.showToastSafe("没有人员数据！");
+                    UIUtil.showToastSafe("没有人员数据！");
                 }
             }
         });
         //
-        mBtn_yijian.setOnClickListener(new OnClickListener() {
+        mBtn_yijian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(MainAct.this, FillAdvise.class);
+                intent.setClass(MainAct.this, FillAdviseAct.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.push_left_in,
                         R.anim.push_left_out);
@@ -232,7 +240,7 @@ public class MainAct extends FragmentActivity implements AdapterView.OnItemClick
                 StringBuffer buffer = new StringBuffer();
                 CommenUnit.requestServerByGet(btnUrl, buffer, null);
                 if (buffer.toString().startsWith("<?xml")) {
-                    FileUtils.saveFile(buffer.toString(), CommenUnit.EVAL_DIR
+                    FileUtil.saveFile(buffer.toString(), CommenUnit.EVAL_DIR
                             + "button.xml");
                 }
 
@@ -285,7 +293,7 @@ public class MainAct extends FragmentActivity implements AdapterView.OnItemClick
         // OkHttpUtil.cancelRequest(TAG);
     }
 
-    private final class GestureListener implements OnGesturePerformedListener {
+    private final class GestureListener implements GestureOverlayView.OnGesturePerformedListener {
         @Override
         public void onGesturePerformed(GestureOverlayView overlay,
                                        Gesture gesture) {
@@ -342,9 +350,6 @@ public class MainAct extends FragmentActivity implements AdapterView.OnItemClick
                     }
                 }).build();
         AlertView v = (AlertView) o;
-        if(position == 0 && warningTitle.equals(v.getTitle())){
-            requestQueue.add(bindRequest);
-        }
         // -1点击的是取消按钮
         if (position == -1 && alertView2.isShowing()) {
             alertView2.dismiss();

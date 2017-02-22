@@ -17,7 +17,7 @@ public class IOUtil {
             try {
                 io.close();
             } catch (IOException e) {
-                LogUtils.e(e);
+                LogUtil.e(e);
             }
         }
         return true;

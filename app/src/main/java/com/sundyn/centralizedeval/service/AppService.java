@@ -2,6 +2,7 @@ package com.sundyn.centralizedeval.service;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
 import android.app.ProgressDialog;
 import android.app.Service;
 import android.content.Context;
@@ -9,16 +10,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.IBinder;
-import android.support.v7.app.AlertDialog;
+import android.os.Message;
+import android.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 
 import com.m8.update.AppUpdate;
-import com.sundyn.centralizedeval.commen.CommenUnit;
 import com.sundyn.centralizedeval.R;
 import com.sundyn.centralizedeval.bean.SyncTime;
+import com.sundyn.centralizedeval.commen.CommenUnit;
+import com.sundyn.centralizedeval.commen.CommenUnit.SERVER_STATE;
+import com.sundyn.centralizedeval.utils.GsonUtil;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,7 +34,11 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.List;
+
+//import com.evalterminal.m8.commen.CommenUnit.SERVER_STATE;
 
 /**
  * Created by Administrator on 2017/2/21.
@@ -115,7 +124,7 @@ public class AppService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (mIsRunning) {
-            return 0;
+            return START_STICKY_COMPATIBILITY;
         }
         mIsRunning = true;
 
@@ -441,7 +450,7 @@ public class AppService extends Service {
                 // }
                 if (CommenUnit.requestServerByGet(CommenUnit.m8Config.getServerAddr()
                         + "estime/android_post/syncTime", sTime, null)) {
-                    SyncTime syncTime = GsonUtils.json2Bean(sTime.toString(), SyncTime.class);
+                    SyncTime syncTime = GsonUtil.json2Bean(sTime.toString(), SyncTime.class);
                     if (syncTime != null && syncTime.success) {
                         CommenUnit.updateTime(syncTime.time);
                         mTimeUpdated = true;
