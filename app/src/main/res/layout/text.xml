@@ -1,4 +1,4 @@
-<com.evalterminal.m8.plugin.views.VerticalScrollTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sundyn.centralizedeval.views.VerticalScrollTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/idAdsReader"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />

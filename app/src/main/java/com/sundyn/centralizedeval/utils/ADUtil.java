@@ -26,6 +26,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * 该类提供广告播放的工具类，提供读取广告文件，左滑和右滑时切换广告图片
  */
 
 public class ADUtil {

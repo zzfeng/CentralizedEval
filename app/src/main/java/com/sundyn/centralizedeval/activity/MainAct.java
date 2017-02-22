@@ -366,17 +366,13 @@ public class MainAct extends FragmentActivity implements OnItemClickListener,OnD
                             }
                             String[] split = response.split(":");
                             if (split[1].contains("success")) {
-                                LocalData.readDepartment();
-                                Toast.makeText(
-                                        ctx,
-                                        "您已成功绑定" + departList.get(position)
-                                                + "部门", Toast.LENGTH_LONG)
-                                        .show();
+                                //LocalData.readDepartment();
+                                Toast.makeText(ctx, "您已成功绑定" + departList.get(position)
+                                                + "部门", Toast.LENGTH_LONG).show();
 
                                 return;
                             } else {
-                                Toast.makeText(ctx, "绑定失败，请重新绑定",
-                                        Toast.LENGTH_LONG).show();
+                                Toast.makeText(ctx, "绑定失败，请重新绑定", Toast.LENGTH_LONG).show();
                                 if(!alertView.isShowing()){
                                     alertView.show();
                                 }
@@ -389,8 +385,7 @@ public class MainAct extends FragmentActivity implements OnItemClickListener,OnD
                     if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
                     }
-                    Toast.makeText(ctx, "网络异常，请稍后重试", Toast.LENGTH_LONG)
-                            .show();
+                    Toast.makeText(ctx, "网络异常，请稍后重试", Toast.LENGTH_LONG).show();
                     Log.i("VolleyError",
                             "VolleyErrorVolleyErrorVolleyError");
                     if(!alertView.isShowing()){

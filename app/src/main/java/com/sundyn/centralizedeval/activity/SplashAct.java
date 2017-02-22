@@ -137,7 +137,7 @@ public class SplashAct extends BaseAct {
         // 初始化配置
         initConfig();
         // 读取机构数据
-        //LocalData.readDepartment();
+        LocalData.readDepartment();
         // 创建快捷方式
         createShortCut();
         // 证书验证
@@ -187,7 +187,7 @@ public class SplashAct extends BaseAct {
 //                	if(flag){
 //                		intent = new Intent(SplashAct.this, MainAct.class);
 //                	}else{
-                    intent = new Intent(SplashAct.this, LoginAct.class);
+                    intent = new Intent(SplashAct.this,LoginAct.class);
 //                	}
                     startActivity(intent);
                     SplashAct.this.finish();

@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -33,13 +32,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainAct">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
         <activity
             android:name=".activity.SplashAct"
             android:label="@string/app_name"
@@ -52,38 +44,37 @@
 
         </activity>
         <activity
-            android:name="activity.MainAct"
+            android:name="com.sundyn.centralizedeval.activity.MainAct"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="activity.EmployeeAct"
+            android:name="com.sundyn.centralizedeval.activity.EmployeeAct"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="activity.LoginAct"
+            android:name="com.sundyn.centralizedeval.activity.LoginAct"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Start"
             android:windowSoftInputMode="adjustResize|adjustUnspecified|stateHidden" >
         </activity>
         <activity
-            android:name="activity.EvalAct"
+            android:name="com.sundyn.centralizedeval.activity.EvalAct"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="activity.DepartmentAct"
+            android:name="com.sundyn.centralizedeval.activity.DepartmentAct"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="activity.DeviceAct"
+            android:name="com.sundyn.centralizedeval.activity.DeviceAct"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="activity.FillAdviseAct"
+            android:name="com.sundyn.centralizedeval.activity.FillAdviseAct"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activity.FillAdsAct"
+            android:name="com.sundyn.centralizedeval.activity.FillAdsAct"
             android:screenOrientation="portrait" >
         </activity>
 

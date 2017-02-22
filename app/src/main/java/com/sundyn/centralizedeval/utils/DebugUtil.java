@@ -4,6 +4,7 @@ import android.util.Log;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * debug模式下输出log信息，发布时设置 debug=false;
  */
 
 public class DebugUtil {

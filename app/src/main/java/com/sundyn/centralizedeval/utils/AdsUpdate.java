@@ -25,6 +25,8 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * 该类是提供广告更新的工具
+ * www.sundyn.cn/estime/android_advertise/resources?mac=010203040506
  */
 
 public class AdsUpdate {

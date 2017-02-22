@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * 获取文件夹，文件大小，文件个数
  */
 
 public class GetFileSizeUtil {

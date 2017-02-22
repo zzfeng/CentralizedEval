@@ -20,6 +20,7 @@ import java.util.Date;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * 该类是提供程序崩溃时未捕获的异常处理，将异常信息日志保存到.log文件中
  */
 
 public class CrashHandler implements UncaughtExceptionHandler {

@@ -11,6 +11,7 @@ import java.util.Map;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * gson工具类
  */
 
 public class GsonUtil {

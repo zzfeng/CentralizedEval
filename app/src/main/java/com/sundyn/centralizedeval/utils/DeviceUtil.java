@@ -7,6 +7,7 @@ import android.os.Build;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * 设备工具类，提供设备制造商信息
  */
 
 public class DeviceUtil {

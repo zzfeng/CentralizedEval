@@ -8,12 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <com.evalterminal.m8.plugin.views.VerticalScrollTextView
+        <com.sundyn.centralizedeval.views.VerticalScrollTextView
             android:id="@+id/idAdsReader"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <com.evalterminal.m8.plugin.views.AdsVideo
+        <com.sundyn.centralizedeval.views.AdsVideo
             android:id="@+id/idAdsPlayer"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

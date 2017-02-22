@@ -3,9 +3,6 @@ package com.sundyn.centralizedeval.utils;
 import android.content.Context;
 import android.os.Environment;
 
-import com.lidroid.xutils.util.IOUtils;
-import com.lidroid.xutils.util.LogUtils;
-
 import org.apache.http.util.EncodingUtils;
 
 import java.io.BufferedInputStream;
@@ -24,6 +21,7 @@ import java.util.Properties;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * 文件工具类
  */
 
 public class FileUtil {

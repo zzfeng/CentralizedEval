@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2017/2/21.
+ * 数据库工具类，增删改查
  */
 
 public class DatabaseUtil {
